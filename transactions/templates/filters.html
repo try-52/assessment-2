@@ -1,0 +1,48 @@
+<div class="flex flex-col border-2">
+  <div class="m-2 border-2">
+    <h3>Add Filters to see data</h3>
+    <label>Category:</label>
+    <select class="border-2 m-1" ng-model="$parent.categoryFilter">
+        <option value="">All Categories</option>
+        <option ng-repeat="category in categories" value="{{category.name}}">{{category.name}}</option>
+    </select>
+  </div>
+
+  <div class="m-2 border-2">
+    <label>Start Date:</label>
+    <input class="border-2 m-1" type="date" ng-model="$parent.startDateFilter">  
+  </div>
+
+  <div class="m-2 border-2">
+    <label>End Date:</label>
+    <input class="border-2 m-1" type="date" ng-model="$parent.endDateFilter">
+  
+  </div>
+
+  <div class="m-2 border-2">
+    <label>Period:</label>
+    <select class="border-2 m-1" ng-model="$parent.periodFilter">
+        <option value="">No Period Filter</option>
+        <option value="today">Today</option>
+        <option value="this_week">This Week</option>
+        <option value="previous_month">Previous Month</option>
+        <option value="current_month">Current Month</option>
+    </select>
+  </div>
+
+  <div class="m-2">
+    <label>Title:</label>
+    <input class="border-2 m-1" class="border-2" type="text" ng-model="$parent.titleFilter">
+  </div>
+
+  <div class="m-2">
+    <label>Bank Name:</label>
+    <input class="border-2 m-1" type="text" ng-model="$parent.bankNameFilter">
+  </div>
+
+  <div class="m-2">
+    <button class="bg-green-500 text-white p-1 rounded m-1" ng-click="applyFilters()">Apply Filters</button>
+    <button class="bg-red-500 text-white p-1 rounded m-1" ng-click="resetFilters()">Reset Filters</button>    
+  </div>
+
+</div>

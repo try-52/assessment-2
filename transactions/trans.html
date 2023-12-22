@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<!-- Include AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<!-- Include AngularJS route -->
+<script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+
+<!-- AngularJS app script -->
+<script src="js/app.js"></script>
+
+<!-- add tailwind-->
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" integrity="sha384-GLhlTQ8iBZs1EZXl5eieK++PGvNUzr6BqFMl1ssN9l9tlL/20GQai5qM5d5U" crossorigin="anonymous"> -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!--controller script -->
+<script src="js/transactionController.js"></script>
+
+<!--service script -->
+<script src="js/transactionService.js"></script>
+
+</head>
+<p> Transactions Management </p>
+
+<body>
+  <div class="md:grid-cols-3 flex flex-row justify-between m-8" ng-controller="myController">
+    <div class="flex flex-col md:flex-row justify-between m-8">
+      <div class="mb-4 md:mb-0">
+        <!-- Buttons to navigete -->
+        <button class="bg-purple-500 text-white px-2 py-2 m-2 rounded" ng-click="navigateToCategories()">Manage Categories</button>
+        <button class="bg-blue-500 text-white px-2 py-2 m-2 rounded" ng-click="showAddForm()">Add Transaction</button>
+        <button class="bg-green-500 text-white px-2 py-2 mt-2 mb-2 rounded ml-2 mr-2" ng-click="showArchivedTransactions()">Show Archived</button>
+        <button class="bg-yellow-500 text-white px-2 py-2 m-2 rounded" ng-click="showAllTransactions()">Show All Transactions</button>
+        <div ng-include="'templates/transactionForm.html'"></div>
+        <div ng-if="transactions.length === 0">
+          <p>No data to show.</p>
+        </div>
+        <div ng-include="'templates/list.html'"></div>
+      </div>
+  
+      <!-- Filters -->
+      <div class="mb-4 md:mb-0">
+        <div ng-include="'templates/filters.html'"></div>
+      </div>
+  
+      <!-- Categories show, delete etc -->
+      <div ng-include="'templates/categories.html'" ng-show="isCategoriesPage"></div>
+  
+    </div>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<table class="table-fixed bg-white border border-gray-300 mt-2">
+  <thead>
+    <tr>
+      <th class="py-2 px-4 border-b">Category</th>
+      <th class="py-2 px-4 border-b">Bank Name</th>
+      <th class="py-2 px-4 border-b">Amount</th>
+      <th class="py-2 px-4 border-b">Title</th>
+      <th class="py-2 px-4 border-b">Description</th>
+      <th class="py-2 px-4 border-b">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="transaction in transactions">
+      <td class="py-2 px-4 border-b max-w-20 truncate">{{ transaction.category }}</td>
+      <td class="py-2 px-4 border-b max-w-20 truncate">{{ transaction.bank_name }}</td>
+      <td class="py-2 px-4 border-b max-w-20 truncate">{{ transaction.amount }}</td>
+      <td class="py-2 px-4 border-b max-w-20 truncate" title="{{ transaction.title }}">
+        {{ transaction.title | limitTo: 10 }}
+      </td>
+      <td class="py-2 px-4 border-b max-w-20 truncate">{{ transaction.description }}</td>
+      <td class="py-2 px-4 border-b" ng-if="!transaction.archived">
+        <button class="bg-blue-500 text-white px-2 py-1 rounded mr-2" ng-if="!transaction.archived" ng-click="editTransaction(transaction)">Edit</button>
+        <button class="bg-blue-500 text-white px-2 py-1 rounded" ng-if="!transaction.archived" ng-click="deleteTransaction(transaction)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

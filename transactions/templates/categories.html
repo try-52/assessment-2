@@ -1,0 +1,30 @@
+<div class="m-2">
+  <div ng-if="categories.length > 0">
+    <h2>All Categories</h2>
+
+      <table class="min-w-full bg-white border border-gray-300 mt-2">
+        <thead>
+          <tr>
+            <th class="py-2 px-4 border-b">Namee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="category in categories">
+            <td class="py-2 px-4 border-b">{{ category.name }}</td>
+            <td class="py-2 px-4 border-b">
+              <button class="bg-green-500 text-white px-2 py-1 rounded" ng-click="deleteCategory(category)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <!--  add a new category -->
+  <p>Add New Category</p>
+  <form ng-submit="addCategory()">
+    <label>Name:</label>
+    <input class="border-2 border-gray-300 rounded w-full py-2 px-4" type="text" ng-model="newCategory.name" required>
+    <button type="submit">Add</button>
+  </form>
+</div>
+
